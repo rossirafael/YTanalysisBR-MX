@@ -468,6 +468,7 @@ function App() {
   const [progress, setProgress] = useState("");
   const [logs, setLogs] = useState([]);
   const [lastUpdated, setLastUpdated] = useState({ mx: null, br: null });
+  const [weeks, setWeeks] = useState(2);
 
   const log = (msg, type = "info") => setLogs(l => [...l, { msg, type }]);
 
@@ -475,7 +476,7 @@ function App() {
     setLoading(true); setLogs([]);
     setProgress("Connecting to worker…");
     const since = new Date();
-    since.setDate(since.getDate() - 30);
+    since.setDate(since.getDate() - (weeks * 7));
     log(`Starting ${c.toUpperCase()} — cutoff: ${since.toDateString()}`);
     try {
       setProgress("Fetching YouTube data & running AI analysis…");
@@ -530,6 +531,13 @@ function App() {
             <button className={`segment-btn ${country === "br" ? "active" : ""}`} onClick={() => setCountry("br")}>🇧🇷 Brazil</button>
           </div>
           <div className="toolbar-right">
+            <div className="segment-control">
+              {[1,2,3].map(w => (
+                <button key={w} className={`segment-btn ${weeks === w ? "active" : ""}`} onClick={() => setWeeks(w)}>
+                  {w}w
+                </button>
+              ))}
+            </div>
             {lastUpdated[country] && (
               <span className="updated-label">Updated {lastUpdated[country].toLocaleTimeString()}</span>
             )}
@@ -540,7 +548,7 @@ function App() {
           <div className="stats-bar">
             <div className="stat-pill">📡 <strong>{current.length}</strong> active channels</div>
             <div className="stat-pill">🎬 <strong>{totalVideos}</strong> videos analyzed</div>
-            <div className="stat-pill">📅 <strong>Last 30 days</strong></div>
+            <div className="stat-pill">📅 <strong>Last {weeks} week{weeks > 1 ? "s" : ""}</strong></div>
           </div>
         )}
 
