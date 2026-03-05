@@ -254,6 +254,7 @@ function FlashCard(props) {
                     <span className="video-stat">👁 {fmtN(v.viewCount)}</span>
                     <span className="video-stat">👍 {fmtN(v.likeCount)}</span>
                     <span className="video-stat">💬 {fmtN(v.commentCount)}</span>
+                    {v.duration && <span className="video-stat">⏱ {v.duration}</span>}
                   </div>
                   <div className="video-summary">{v.summary}</div>
                 </div>
@@ -319,7 +320,7 @@ function App() {
   var ps = useState(""); var progress = ps[0]; var setProgress = ps[1];
   var lgs = useState([]); var logs = lgs[0]; var setLogs = lgs[1];
   var us = useState({mx:null,br:null}); var lastUpdated = us[0]; var setLastUpdated = us[1];
-  var ws = useState(2); var weeks = ws[0]; var setWeeks = ws[1];
+  var ss = useState("views"); var sortBy = ss[0]; var setSortBy = ss[1];
 
   function log(msg, type) { setLogs(function(l){ return l.concat([{msg:msg,type:type||"info"}]); }); }
 
@@ -416,9 +417,22 @@ function App() {
 
         {current && !loading && (
           <div>
+            var sorted = (current || []).slice().sort(function(a, b) {
+            if (sortBy === "views") return sumViews(b.videos) - sumViews(a.videos);
+            if (sortBy === "videos") return (b.videos||[]).length - (a.videos||[]).length;
+            return a.name.localeCompare(b.name);
+          });
             <HighlightsSection results={current} />
+            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"16px"}}>
+              <span style={{fontSize:"12px",color:"#86868b",fontWeight:"500"}}>Sort by</span>
+              <div className="segment-control">
+                {[["views","👁 Views"],["videos","🎬 Videos"],["name","🔤 Name"]].map(function(opt){
+                  return <button key={opt[0]} className={"segment-btn"+(sortBy===opt[0]?" active":"")} onClick={function(){ setSortBy(opt[0]); }}>{opt[1]}</button>;
+                })}
+              </div>
+            </div>
             <div className="cards-grid">
-              {current.map(function(ch,i){ return <FlashCard key={i} ch={ch} />; })}
+              {sorted.map(function(ch,i){ return <FlashCard key={i} ch={ch} />; })}
               {skippedList.length > 0 && (
                 <div className="flashcard" style={{cursor:"default"}}>
                   <div className="flashcard-header">
@@ -437,7 +451,10 @@ function App() {
                             ? <img src={ch.thumb} style={{width:"22px",height:"22px",borderRadius:"50%",objectFit:"cover"}} alt="" />
                             : <span style={{fontSize:"16px"}}>{brandEmoji(ch.name)}</span>
                           }
-                          <span style={{fontSize:"12px",color:"#3d3d3f",fontWeight:"500"}}>{ch.name}</span>
+                          <div>
+                            <div style={{fontSize:"12px",color:"#3d3d3f",fontWeight:"500"}}>{ch.name}</div>
+                            {ch.lastSeen && <div style={{fontSize:"10px",color:"#86868b"}}>Last upload: {fmtD(ch.lastSeen)}</div>}
+                          </div>
                         </div>
                       );
                     })}
