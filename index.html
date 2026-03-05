@@ -13,7 +13,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
 .titlebar { background: rgba(255,255,255,0.72); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.1); padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .titlebar-left { display: flex; align-items: center; gap: 12px; }
-.titlebar-icon { font-size: 20px; }
 .titlebar-title { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; }
 .mac-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; transition: all 0.15s; font-family: inherit; }
 .mac-btn-primary { background: #0071e3; color: white; }
@@ -24,21 +23,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 .segment-btn.active { background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
 .main { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
 .toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
-.toolbar-right { display: flex; align-items: center; gap: 10px; }
+.toolbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .updated-label { font-size: 12px; color: #86868b; }
 .stats-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
 .stat-pill { background: white; border-radius: 10px; padding: 8px 14px; font-size: 12px; color: #86868b; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
 .stat-pill strong { color: #1d1d1f; font-size: 14px; font-weight: 600; }
+.sort-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.sort-label { font-size: 12px; color: #86868b; font-weight: 500; }
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
 .flashcard { background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 0 0 0.5px rgba(0,0,0,0.06); overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
-.flashcard:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.12), 0 0 0 0.5px rgba(0,0,0,0.06); transform: translateY(-2px); }
+.flashcard:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
 .flashcard-header { padding: 16px 16px 12px; display: flex; align-items: center; gap: 12px; }
 .channel-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg,#e8e8ed,#d1d1d6); flex-shrink: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 18px; }
 .channel-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .channel-meta { flex: 1; min-width: 0; }
 .channel-name { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .channel-handle { font-size: 12px; color: #86868b; margin-top: 1px; }
-.video-badge { background: #e8f4fd; color: #0071e3; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
 .flashcard-divider { height: 1px; background: rgba(0,0,0,0.06); margin: 0 16px; }
 .flashcard-body { padding: 12px 16px; }
 .stat-row { display: flex; gap: 14px; margin-bottom: 10px; }
@@ -52,13 +52,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 .video-item { padding: 12px 16px; border-bottom: 1px solid rgba(0,0,0,0.04); display: flex; gap: 10px; }
 .video-item:last-child { border-bottom: none; }
 .video-item:hover { background: #f9f9fb; }
-.video-thumb { width: 88px; height: 54px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: #e8e8ed; }
+.video-thumb { width: 88px; height: 54px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
 .video-thumb-ph { width: 88px; height: 54px; border-radius: 8px; background: linear-gradient(135deg,#e8e8ed,#d1d1d6); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 .video-info { flex: 1; min-width: 0; }
 .video-rank { display: inline-block; width: 18px; height: 18px; line-height: 18px; background: #f0f0f5; border-radius: 50%; font-size: 10px; font-weight: 700; color: #86868b; text-align: center; margin-bottom: 3px; }
-.video-title { font-size: 13px; font-weight: 500; color: #1d1d1f; line-height: 1.4; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-decoration: none; display: block; }
+.video-title { font-size: 13px; font-weight: 500; color: #1d1d1f; line-height: 1.4; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-decoration: none; }
 .video-title:hover { color: #0071e3; }
-.video-stats { display: flex; gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+.video-stats { display: flex; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
 .video-stat { font-size: 11px; color: #86868b; }
 .video-summary { font-size: 12px; color: #6e6e73; line-height: 1.45; }
 .highlights-section { margin-bottom: 28px; }
@@ -70,10 +70,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 .highlight-thumb-wrap { position: relative; width: 100%; padding-top: 56.25%; background: #e8e8ed; }
 .highlight-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .highlight-thumb-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 32px; }
-.highlight-rank { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); color: white; font-size: 13px; font-weight: 700; padding: 3px 8px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
+.highlight-rank { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,0.55); backdrop-filter: blur(6px); color: white; font-size: 13px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
 .highlight-body { padding: 10px 12px 12px; }
 .highlight-channel { font-size: 11px; color: #86868b; margin-bottom: 3px; font-weight: 500; }
-.highlight-title { font-size: 13px; font-weight: 600; color: #1d1d1f; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-decoration: none; display: block; }
+.highlight-title { font-size: 13px; font-weight: 600; color: #1d1d1f; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-decoration: none; }
 .highlight-title:hover { color: #0071e3; }
 .highlight-stats { display: flex; gap: 8px; flex-wrap: wrap; }
 .highlight-stat { font-size: 11px; color: #3d3d3f; background: #f5f5f7; border-radius: 6px; padding: 3px 7px; font-weight: 500; }
@@ -88,15 +88,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .spin { display: inline-block; animation: spin 1s linear infinite; }
-.add-panel { background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08),0 0 0 0.5px rgba(0,0,0,0.06); padding: 20px; margin-top: 32px; max-width: 400px; }
+.add-panel { background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 20px; margin-top: 32px; max-width: 400px; }
 .add-panel-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
-.mac-input { width: 100%; padding: 8px 12px; border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; font-size: 13px; font-family: inherit; color: #1d1d1f; background: white; outline: none; margin-bottom: 8px; transition: border-color 0.15s; }
+.mac-input { width: 100%; padding: 8px 12px; border: 1px solid rgba(0,0,0,0.15); border-radius: 8px; font-size: 13px; font-family: inherit; color: #1d1d1f; background: white; outline: none; margin-bottom: 8px; }
 .mac-input:focus { border-color: #0071e3; box-shadow: 0 0 0 3px rgba(0,113,227,0.15); }
 .add-success { font-size: 12px; color: #34c759; margin-top: 6px; }
 .add-error { font-size: 12px; color: #ff3b30; margin-top: 6px; }
-.debug-panel { margin-top: 24px; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-.debug-header { padding: 10px 16px; background: #f9f9fb; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 12px; color: #86868b; font-weight: 500; }
-.debug-body { max-height: 200px; overflow-y: auto; font-family: "SF Mono", monospace; font-size: 11px; }
+.debug-panel { margin-top: 24px; background: white; border-radius: 12px; overflow: hidden; }
+.debug-header { padding: 10px 16px; background: #f9f9fb; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; justify-content: space-between; cursor: pointer; font-size: 12px; color: #86868b; font-weight: 500; }
+.debug-body { max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 11px; }
 .debug-line { padding: 4px 16px; border-bottom: 1px solid rgba(0,0,0,0.03); }
 .debug-line.error { color: #ff3b30; background: #fff5f5; }
 .debug-line.warn { color: #ff9500; background: #fffbf0; }
@@ -106,68 +106,85 @@ body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvet
 <body>
 <div id="root"></div>
 <script type="text/babel">
-
-var useState = React.useState;
 var WORKER = "https://cool-firefly-fb18.hpqhwyg5ws.workers.dev";
 
 var DEFAULT_CHANNELS = {
   mx: [
-    { handle: "samsungmexico", name: "Samsung Mexico" },
-    { handle: "OPPOMexico", name: "OPPO Mexico" },
-    { handle: "honor_mexico", name: "HONOR Mexico" },
-    { handle: "HuaweiMobileMx", name: "Huawei Mobile MX" },
-    { handle: "vivomobilemx", name: "vivo Mexico" },
-    { handle: "motorola_mx", name: "Motorola Mexico" },
-    { handle: "GoogleMexico", name: "Google Mexico" },
-    { handle: "Xiaomi.Mexico", name: "Xiaomi Mexico" },
-    { handle: "realmeMéxico", name: "realme Mexico" },
+    {handle:"samsungmexico",name:"Samsung Mexico"},
+    {handle:"OPPOMexico",name:"OPPO Mexico"},
+    {handle:"honor_mexico",name:"HONOR Mexico"},
+    {handle:"HuaweiMobileMx",name:"Huawei Mobile MX"},
+    {handle:"vivomobilemx",name:"vivo Mexico"},
+    {handle:"motorola_mx",name:"Motorola Mexico"},
+    {handle:"GoogleMexico",name:"Google Mexico"},
+    {handle:"Xiaomi.Mexico",name:"Xiaomi Mexico"},
+    {handle:"realmeMéxico",name:"realme Mexico"}
   ],
   br: [
-    { handle: "samsungbrasil", name: "Samsung Brasil" },
-    { handle: "Xiaomi.Brasil", name: "Xiaomi Brasil" },
-    { handle: "oppobrasil", name: "OPPO Brasil" },
-    { handle: "realmeBrasil", name: "realme Brasil" },
-    { handle: "HONOR.Brasil", name: "HONOR Brasil" },
-    { handle: "Jovi.Brasil", name: "Jovi Brasil" },
-    { handle: "MotoBRA", name: "Motorola Brasil" },
+    {handle:"samsungbrasil",name:"Samsung Brasil"},
+    {handle:"Xiaomi.Brasil",name:"Xiaomi Brasil"},
+    {handle:"oppobrasil",name:"OPPO Brasil"},
+    {handle:"realmeBrasil",name:"realme Brasil"},
+    {handle:"HONOR.Brasil",name:"HONOR Brasil"},
+    {handle:"Jovi.Brasil",name:"Jovi Brasil"},
+    {handle:"MotoBRA",name:"Motorola Brasil"}
   ]
 };
 
-var BRAND_EMOJI = { samsung:"🌀",oppo:"⭕",honor:"🔷",huawei:"🌸",vivo:"💜",motorola:"🔵",google:"🎯",xiaomi:"🟠",realme:"🟢",jovi:"💛",moto:"🔵" };
+var BRAND_EMOJI = {samsung:"🌀",oppo:"⭕",honor:"🔷",huawei:"🌸",vivo:"💜",motorola:"🔵",google:"🎯",xiaomi:"🟠",realme:"🟢",jovi:"💛",moto:"🔵"};
+
 function brandEmoji(name) {
   var k = name.toLowerCase();
   var keys = Object.keys(BRAND_EMOJI);
-  for (var i = 0; i < keys.length; i++) { if (k.indexOf(keys[i]) !== -1) return BRAND_EMOJI[keys[i]]; }
+  for (var i = 0; i < keys.length; i++) {
+    if (k.indexOf(keys[i]) >= 0) return BRAND_EMOJI[keys[i]];
+  }
   return "📱";
 }
 
 function fmtN(n) {
-  if (n == null || isNaN(n)) return "N/A";
-  n = parseInt(n);
-  if (n >= 1e6) return (n/1e6).toFixed(1)+"M";
-  if (n >= 1e3) return (n/1e3).toFixed(1)+"K";
-  return String(n);
+  if (n == null) return "N/A";
+  var x = parseInt(n);
+  if (isNaN(x)) return "N/A";
+  if (x >= 1000000) return (x/1000000).toFixed(1)+"M";
+  if (x >= 1000) return (x/1000).toFixed(1)+"K";
+  return String(x);
 }
-function fmtD(d) { return d ? new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}) : "—"; }
-function sumViews(videos) { return (videos||[]).reduce(function(s,v){ return s+(parseInt(v.viewCount)||0); },0); }
 
-class ErrorBoundary extends React.Component {
-  constructor(props) { super(props); this.state = { error: null }; }
-  componentDidCatch(e) { this.setState({ error: e.message }); }
-  render() {
-    if (this.state.error) return React.createElement("div",{style:{padding:"40px",fontFamily:"monospace",color:"#ff3b30",background:"#fff5f5",borderRadius:"12px",margin:"20px"}},"Render error: "+this.state.error);
-    return this.props.children;
-  }
+function fmtD(d) {
+  if (!d) return "—";
+  return new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+}
+
+function sumViews(videos) {
+  if (!videos) return 0;
+  var t = 0;
+  for (var i = 0; i < videos.length; i++) t += (parseInt(videos[i].viewCount) || 0);
+  return t;
+}
+
+function sortChannels(channels, sortBy) {
+  var arr = channels.slice();
+  arr.sort(function(a, b) {
+    if (sortBy === "views") return sumViews(b.videos) - sumViews(a.videos);
+    if (sortBy === "videos") return (b.videos||[]).length - (a.videos||[]).length;
+    return a.name.localeCompare(b.name);
+  });
+  return arr;
 }
 
 function HighlightsSection(props) {
-  var results = props.results;
-  if (!results || !results.length) return null;
+  var results = props.results || [];
   var allVideos = [];
   for (var i = 0; i < results.length; i++) {
-    var ch = results[i];
-    for (var j = 0; j < (ch.videos||[]).length; j++) {
-      allVideos.push(Object.assign({}, ch.videos[j], { channelName: ch.name, handle: ch.handle }));
+    var vids = results[i].videos || [];
+    for (var j = 0; j < vids.length; j++) {
+      allVideos.push({
+        id: vids[j].id, title: vids[j].title, thumb: vids[j].thumb,
+        viewCount: vids[j].viewCount, likeCount: vids[j].likeCount,
+        commentCount: vids[j].commentCount, publishedAt: vids[j].publishedAt,
+        channelName: results[i].name
+      });
     }
   }
   allVideos.sort(function(a,b){ return (parseInt(b.viewCount)||0)-(parseInt(a.viewCount)||0); });
@@ -178,9 +195,9 @@ function HighlightsSection(props) {
     <div className="highlights-section">
       <div className="highlights-title">🔥 Top Videos This Period</div>
       <div className="highlights-grid">
-        {top3.map(function(v,i) {
+        {top3.map(function(v, i) {
           return (
-            <div key={i} className={"highlight-card"+(i===0?" top1":"")}>
+            <div key={String(i)} className={"highlight-card" + (i===0 ? " top1" : "")}>
               <div className="highlight-thumb-wrap">
                 {v.thumb ? <img src={v.thumb} className="highlight-thumb" alt="" /> : <div className="highlight-thumb-ph">🎬</div>}
                 <div className="highlight-rank">{ranks[i]} #{i+1}</div>
@@ -205,9 +222,9 @@ function HighlightsSection(props) {
 
 function FlashCard(props) {
   var ch = props.ch;
-  var open = useState(false);
-  var isOpen = open[0];
-  var setOpen = open[1];
+  var stateArr = React.useState(false);
+  var isOpen = stateArr[0];
+  var setOpen = stateArr[1];
   var videos = ch.videos || [];
   var total = sumViews(videos);
   return (
@@ -221,7 +238,7 @@ function FlashCard(props) {
           <div className="channel-handle">@{ch.handle}</div>
         </div>
       </div>
-      <div className="flashcard-divider" />
+      <div className="flashcard-divider"></div>
       <div className="flashcard-body">
         <div className="stat-row">
           <span className="stat-chip">🎬 <strong>{videos.length}</strong> video{videos.length!==1?"s":""}</span>
@@ -236,15 +253,13 @@ function FlashCard(props) {
         </button>
         <a href={"https://youtube.com/@"+ch.handle} target="_blank" rel="noreferrer"
           style={{fontSize:"12px",color:"#86868b",textDecoration:"none"}}
-          onClick={function(e){ e.stopPropagation(); }}>
-          Open channel ↗
-        </a>
+          onClick={function(e){ e.stopPropagation(); }}>Open channel ↗</a>
       </div>
       {isOpen && (
         <div className="video-list" onClick={function(e){ e.stopPropagation(); }}>
-          {videos.map(function(v,i) {
+          {videos.map(function(v, i) {
             return (
-              <div key={i} className="video-item">
+              <div key={String(i)} className="video-item">
                 {v.thumb ? <img src={v.thumb} className="video-thumb" alt="" /> : <div className="video-thumb-ph">🎬</div>}
                 <div className="video-info">
                   <div className="video-rank">#{i+1}</div>
@@ -254,7 +269,7 @@ function FlashCard(props) {
                     <span className="video-stat">👁 {fmtN(v.viewCount)}</span>
                     <span className="video-stat">👍 {fmtN(v.likeCount)}</span>
                     <span className="video-stat">💬 {fmtN(v.commentCount)}</span>
-                    {v.duration && <span className="video-stat">⏱ {v.duration}</span>}
+                    {v.duration ? <span className="video-stat">⏱ {v.duration}</span> : null}
                   </div>
                   <div className="video-summary">{v.summary}</div>
                 </div>
@@ -267,20 +282,52 @@ function FlashCard(props) {
   );
 }
 
+function InactiveCard(props) {
+  var list = props.list || [];
+  if (!list.length) return null;
+  return (
+    <div className="flashcard" style={{cursor:"default"}}>
+      <div className="flashcard-header">
+        <div className="channel-avatar" style={{background:"#f0f0f5",fontSize:"22px"}}>😴</div>
+        <div className="channel-meta">
+          <div className="channel-name">No new uploads</div>
+          <div className="channel-handle">{list.length} brand{list.length!==1?"s":""} inactive this period</div>
+        </div>
+      </div>
+      <div className="flashcard-divider"></div>
+      <div style={{padding:"12px 16px 16px",display:"flex",flexWrap:"wrap",gap:"8px"}}>
+        {list.map(function(ch, i) {
+          return (
+            <div key={String(i)} style={{display:"flex",alignItems:"center",gap:"6px",background:"#f5f5f7",borderRadius:"8px",padding:"6px 10px"}}>
+              {ch.thumb
+                ? <img src={ch.thumb} style={{width:"22px",height:"22px",borderRadius:"50%",objectFit:"cover"}} alt="" />
+                : <span style={{fontSize:"16px"}}>{brandEmoji(ch.name)}</span>}
+              <div>
+                <div style={{fontSize:"12px",color:"#3d3d3f",fontWeight:"500"}}>{ch.name}</div>
+                {ch.lastSeen ? <div style={{fontSize:"10px",color:"#86868b"}}>Last: {fmtD(ch.lastSeen)}</div> : null}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function DebugLog(props) {
-  var logs = props.logs;
-  var s = useState(false);
-  var open = s[0]; var setOpen = s[1];
+  var logs = props.logs || [];
+  var st = React.useState(false);
+  var open = st[0]; var setOpen = st[1];
   if (!logs.length) return null;
   return (
     <div className="debug-panel">
       <div className="debug-header" onClick={function(){ setOpen(!open); }}>
-        <span>🔍 Debug log ({logs.length} entries)</span>
+        <span>🔍 Debug log ({logs.length})</span>
         <span>{open?"▲":"▼"}</span>
       </div>
       {open && (
         <div className="debug-body">
-          {logs.map(function(l,i){ return <div key={i} className={"debug-line "+l.type}>{l.msg}</div>; })}
+          {logs.map(function(l, i){ return <div key={String(i)} className={"debug-line "+(l.type||"info")}>{l.msg}</div>; })}
         </div>
       )}
     </div>
@@ -288,17 +335,18 @@ function DebugLog(props) {
 }
 
 function AddChannelForm(props) {
-  var country = props.country; var onAdd = props.onAdd;
-  var hs = useState(""); var handle = hs[0]; var setHandle = hs[1];
-  var ns = useState(""); var name = ns[0]; var setName = ns[1];
-  var ms = useState({text:"",type:""}); var msg = ms[0]; var setMsg = ms[1];
+  var country = props.country;
+  var onAdd = props.onAdd;
+  var hs = React.useState(""); var handle = hs[0]; var setHandle = hs[1];
+  var ns = React.useState(""); var name = ns[0]; var setName = ns[1];
+  var ms = React.useState({text:"",type:""}); var msg = ms[0]; var setMsg = ms[1];
   function submit() {
-    if (!handle.trim()||!name.trim()) { setMsg({text:"Fill in both fields.",type:"error"}); return; }
+    if (!handle.trim() || !name.trim()) { setMsg({text:"Fill in both fields.",type:"error"}); return; }
     var h = handle.trim().replace(/^@/,"").replace(/.*youtube\.com\/@?/,"").replace(/\/.*/,"");
-    onAdd(country,{handle:h,name:name.trim()});
+    onAdd(country, {handle:h, name:name.trim()});
     setHandle(""); setName("");
     setMsg({text:"✓ Added! Hit Refresh to include it.",type:"success"});
-    setTimeout(function(){ setMsg({text:"",type:""}); },3000);
+    setTimeout(function(){ setMsg({text:"",type:""}); }, 3000);
   }
   return (
     <div className="add-panel">
@@ -306,72 +354,89 @@ function AddChannelForm(props) {
       <input className="mac-input" value={name} onChange={function(e){setName(e.target.value);}} placeholder="Display name" />
       <input className="mac-input" value={handle} onChange={function(e){setHandle(e.target.value);}} placeholder="@handle or YouTube URL" />
       <button className="mac-btn mac-btn-primary" style={{width:"100%",justifyContent:"center"}} onClick={submit}>Add Channel</button>
-      {msg.text && <div className={msg.type==="success"?"add-success":"add-error"}>{msg.text}</div>}
+      {msg.text ? <div className={msg.type==="success"?"add-success":"add-error"}>{msg.text}</div> : null}
     </div>
   );
 }
 
 function App() {
-  var cs = useState("mx"); var country = cs[0]; var setCountry = cs[1];
-  var chs = useState(DEFAULT_CHANNELS); var channels = chs[0]; var setChannels = chs[1];
-  var rs = useState({mx:null,br:null}); var results = rs[0]; var setResults = rs[1];
-  var sk = useState({mx:[],br:[]}); var skipped = sk[0]; var setSkipped = sk[1];
-  var ls = useState(false); var loading = ls[0]; var setLoading = ls[1];
-  var ps = useState(""); var progress = ps[0]; var setProgress = ps[1];
-  var lgs = useState([]); var logs = lgs[0]; var setLogs = lgs[1];
-  var us = useState({mx:null,br:null}); var lastUpdated = us[0]; var setLastUpdated = us[1];
-  var ss = useState("views"); var sortBy = ss[0]; var setSortBy = ss[1];
+  var c1 = React.useState("mx"); var country = c1[0]; var setCountry = c1[1];
+  var c2 = React.useState(DEFAULT_CHANNELS); var channels = c2[0]; var setChannels = c2[1];
+  var c3 = React.useState({mx:null,br:null}); var results = c3[0]; var setResults = c3[1];
+  var c4 = React.useState({mx:[],br:[]}); var skipped = c4[0]; var setSkipped = c4[1];
+  var c5 = React.useState(false); var loading = c5[0]; var setLoading = c5[1];
+  var c6 = React.useState(""); var progress = c6[0]; var setProgress = c6[1];
+  var c7 = React.useState([]); var logs = c7[0]; var setLogs = c7[1];
+  var c8 = React.useState({mx:null,br:null}); var lastUpdated = c8[0]; var setLastUpdated = c8[1];
+  var c9 = React.useState(1); var weeks = c9[0]; var setWeeks = c9[1];
+  var c10 = React.useState("views"); var sortBy = c10[0]; var setSortBy = c10[1];
 
-  function log(msg, type) { setLogs(function(l){ return l.concat([{msg:msg,type:type||"info"}]); }); }
+  function addLog(msg, type) {
+    setLogs(function(prev) { return prev.concat([{msg:msg, type:type||"info"}]); });
+  }
 
   async function refresh(c) {
-    setLoading(true); setLogs([]);
+    setLoading(true);
+    setLogs([]);
     setProgress("Connecting to worker…");
     var since = new Date();
     since.setDate(since.getDate() - (weeks * 7));
-    log("Starting "+c.toUpperCase()+" — cutoff: "+since.toDateString());
+    addLog("Starting "+c.toUpperCase()+" — cutoff: "+since.toDateString());
     try {
       setProgress("Fetching YouTube data & running AI analysis…");
       var res = await fetch(WORKER+"/analyze", {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({handles:channels[c],since:since.toISOString()})
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({handles: channels[c], since: since.toISOString()})
       });
-      if (!res.ok) { var txt = await res.text(); throw new Error("Worker HTTP "+res.status+": "+txt.slice(0,200)); }
+      if (!res.ok) {
+        var txt = await res.text();
+        throw new Error("Worker HTTP "+res.status+": "+txt.slice(0,200));
+      }
       var data = await res.json();
-      log("Worker returned "+data.length+" results");
-      var out = []; var skOut = [];
+      addLog("Worker returned "+data.length+" results");
+      var out = [];
+      var skOut = [];
       for (var i = 0; i < data.length; i++) {
         var ch = data[i];
-        if (ch.error) { log("✗ "+ch.name+": "+ch.error,"error"); skOut.push(ch); continue; }
-        if (ch.skipped) { log("⏭ "+ch.name+": no smartphone videos","warn"); skOut.push(ch); continue; }
-        log("✅ "+ch.name+": "+(ch.videos||[]).length+" videos");
-        out.push(ch);
+        if (ch.error) { addLog("✗ "+ch.name+": "+ch.error, "error"); skOut.push(ch); }
+        else if (ch.skipped) { addLog("⏭ "+ch.name+": no smartphone videos", "warn"); skOut.push(ch); }
+        else { addLog("✅ "+ch.name+": "+(ch.videos||[]).length+" videos"); out.push(ch); }
       }
-      setResults(function(r){ return Object.assign({},r,{[c]:out}); });
-      setSkipped(function(s){ return Object.assign({},s,{[c]:skOut}); });
-      setLastUpdated(function(u){ return Object.assign({},u,{[c]:new Date()}); });
-      log("Done — "+out.length+" active channel(s)");
-    } catch(e) { log("Fatal: "+e.message,"error"); }
-    setProgress(""); setLoading(false);
+      setResults(function(prev) { var n={}; n.mx=prev.mx; n.br=prev.br; n[c]=out; return n; });
+      setSkipped(function(prev) { var n={}; n.mx=prev.mx; n.br=prev.br; n[c]=skOut; return n; });
+      setLastUpdated(function(prev) { var n={}; n.mx=prev.mx; n.br=prev.br; n[c]=new Date(); return n; });
+      addLog("Done — "+out.length+" active channel(s)");
+    } catch(e) {
+      addLog("Fatal: "+e.message, "error");
+    }
+    setProgress("");
+    setLoading(false);
   }
 
-  function addChannel(c, ch) { setChannels(function(p){ var n=Object.assign({},p); n[c]=p[c].concat([ch]); return n; }); }
+  function addChannel(c, ch) {
+    setChannels(function(prev) {
+      var n = {mx: prev.mx.slice(), br: prev.br.slice()};
+      n[c] = n[c].concat([ch]);
+      return n;
+    });
+  }
 
-  var current = results[country];
-  var totalVideos = current ? current.reduce(function(s,ch){ return s+(ch.videos||[]).length; },0) : 0;
+  var current = results[country] || null;
   var skippedList = skipped[country] || [];
+  var totalVideos = current ? current.reduce(function(s,ch){ return s+(ch.videos||[]).length; },0) : 0;
+  var sorted = current ? sortChannels(current, sortBy) : [];
 
   return (
     <div>
       <div className="titlebar">
         <div className="titlebar-left">
-          <span className="titlebar-icon">📱</span>
+          <span style={{fontSize:"20px"}}>📱</span>
           <div className="titlebar-title">YT Channel Monitor</div>
         </div>
         <button className="mac-btn mac-btn-primary" onClick={function(){ refresh(country); }} disabled={loading}>
-          <span style={{fontSize:"18px",lineHeight:1}} className={loading?"spin":""}> ⟳</span>
-          {loading?"Analyzing…":"Refresh"}
+          <span style={{fontSize:"18px",lineHeight:"1"}} className={loading?"spin":""}>⟳</span>
+          {loading ? "Analyzing…" : "Refresh"}
         </button>
       </div>
 
@@ -383,87 +448,55 @@ function App() {
           </div>
           <div className="toolbar-right">
             <div className="segment-control">
-              {[1,2,3].map(function(w){
-                return <button key={w} className={"segment-btn"+(weeks===w?" active":"")} onClick={function(){ setWeeks(w); }}>{w}w</button>;
-              })}
+              <button className={"segment-btn"+(weeks===1?" active":"")} onClick={function(){ setWeeks(1); }}>1w</button>
+              <button className={"segment-btn"+(weeks===2?" active":"")} onClick={function(){ setWeeks(2); }}>2w</button>
+              <button className={"segment-btn"+(weeks===3?" active":"")} onClick={function(){ setWeeks(3); }}>3w</button>
             </div>
-            {lastUpdated[country] && <span className="updated-label">Updated {lastUpdated[country].toLocaleTimeString()}</span>}
+            {lastUpdated[country] ? <span className="updated-label">Updated {lastUpdated[country].toLocaleTimeString()}</span> : null}
           </div>
         </div>
 
-        {current && !loading && (
+        {current && !loading ? (
           <div className="stats-bar">
             <div className="stat-pill">📡 <strong>{current.length}</strong> active channels</div>
             <div className="stat-pill">🎬 <strong>{totalVideos}</strong> videos analyzed</div>
             <div className="stat-pill">📅 <strong>Last {weeks} week{weeks>1?"s":""}</strong></div>
           </div>
-        )}
+        ) : null}
 
-        {loading && (
+        {loading ? (
           <div className="loading-state">
             <div className="loading-icon">📡</div>
             <div className="loading-title">{progress}</div>
             <div className="loading-sub">This may take 1–2 minutes…</div>
           </div>
-        )}
+        ) : null}
 
-        {!current && !loading && (
+        {!current && !loading ? (
           <div className="empty-state">
             <div className="empty-icon">📊</div>
             <div className="empty-title">No data yet</div>
             <div className="empty-sub">Hit Refresh to analyze {channels[country].length} channels for {country==="mx"?"Mexico 🇲🇽":"Brazil 🇧🇷"}</div>
           </div>
-        )}
+        ) : null}
 
-        {current && !loading && (
+        {current && !loading ? (
           <div>
-            var sorted = (current || []).slice().sort(function(a, b) {
-            if (sortBy === "views") return sumViews(b.videos) - sumViews(a.videos);
-            if (sortBy === "videos") return (b.videos||[]).length - (a.videos||[]).length;
-            return a.name.localeCompare(b.name);
-          });
             <HighlightsSection results={current} />
-            <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"16px"}}>
-              <span style={{fontSize:"12px",color:"#86868b",fontWeight:"500"}}>Sort by</span>
+            <div className="sort-row">
+              <span className="sort-label">Sort by</span>
               <div className="segment-control">
-                {[["views","👁 Views"],["videos","🎬 Videos"],["name","🔤 Name"]].map(function(opt){
-                  return <button key={opt[0]} className={"segment-btn"+(sortBy===opt[0]?" active":"")} onClick={function(){ setSortBy(opt[0]); }}>{opt[1]}</button>;
-                })}
+                <button className={"segment-btn"+(sortBy==="views"?" active":"")} onClick={function(){ setSortBy("views"); }}>👁 Views</button>
+                <button className={"segment-btn"+(sortBy==="videos"?" active":"")} onClick={function(){ setSortBy("videos"); }}>🎬 Videos</button>
+                <button className={"segment-btn"+(sortBy==="name"?" active":"")} onClick={function(){ setSortBy("name"); }}>🔤 Name</button>
               </div>
             </div>
             <div className="cards-grid">
-              {sorted.map(function(ch,i){ return <FlashCard key={i} ch={ch} />; })}
-              {skippedList.length > 0 && (
-                <div className="flashcard" style={{cursor:"default"}}>
-                  <div className="flashcard-header">
-                    <div className="channel-avatar" style={{background:"#f0f0f5",fontSize:"22px"}}>😴</div>
-                    <div className="channel-meta">
-                      <div className="channel-name">No new uploads</div>
-                      <div className="channel-handle">{skippedList.length} brand{skippedList.length!==1?"s":""} inactive this period</div>
-                    </div>
-                  </div>
-                  <div className="flashcard-divider" />
-                  <div style={{padding:"12px 16px 16px",display:"flex",flexWrap:"wrap",gap:"8px"}}>
-                    {skippedList.map(function(ch,i){
-                      return (
-                        <div key={i} style={{display:"flex",alignItems:"center",gap:"6px",background:"#f5f5f7",borderRadius:"8px",padding:"6px 10px"}}>
-                          {ch.thumb
-                            ? <img src={ch.thumb} style={{width:"22px",height:"22px",borderRadius:"50%",objectFit:"cover"}} alt="" />
-                            : <span style={{fontSize:"16px"}}>{brandEmoji(ch.name)}</span>
-                          }
-                          <div>
-                            <div style={{fontSize:"12px",color:"#3d3d3f",fontWeight:"500"}}>{ch.name}</div>
-                            {ch.lastSeen && <div style={{fontSize:"10px",color:"#86868b"}}>Last upload: {fmtD(ch.lastSeen)}</div>}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
+              {sorted.map(function(ch, i) { return <FlashCard key={ch.handle} ch={ch} />; })}
+              <InactiveCard list={skippedList} />
             </div>
           </div>
-        )}
+        ) : null}
 
         <DebugLog logs={logs} />
         <AddChannelForm country={country} onAdd={addChannel} />
@@ -472,10 +505,7 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  React.createElement(ErrorBoundary, null, React.createElement(App, null)),
-  document.getElementById("root")
-);
+ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
 </script>
 </body>
 </html>
