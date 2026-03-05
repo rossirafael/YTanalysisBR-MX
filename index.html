@@ -189,7 +189,12 @@
     padding: 3px 8px;
     border-radius: 20px;
     white-space: nowrap;
-    flex-shrink: 0;
+  }
+  .views-badge {
+    font-size: 11px;
+    color: #86868b;
+    white-space: nowrap;
+    text-align: right;
   }
 
   .flashcard-divider { height: 1px; background: rgba(0,0,0,0.06); margin: 0 16px; }
@@ -625,7 +630,6 @@ function App() {
             <div className="stat-pill">📡 <strong>{current.length}</strong> active channels</div>
             <div className="stat-pill">🎬 <strong>{totalVideos}</strong> videos analyzed</div>
             <div className="stat-pill">📅 <strong>Last {weeks} week{weeks > 1 ? "s" : ""}</strong></div>
-            <div className="stat-pill" style={{background:"#fff3cd"}}>🔍 Debug: first video viewCount = {current[0]?.videos[0]?.viewCount ?? "undefined"}</div>
           </div>
         )}
 
