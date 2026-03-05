@@ -390,10 +390,13 @@ function App() {
   var c10 = React.useState("views"); var sortBy = c10[0]; var setSortBy = c10[1];
 
   function exportPDF() {
-    // Force all video lists visible for print via a temporary class
-    document.body.classList.add("printing");
+    var countryLabel = country === "mx" ? "Mexico" : "Brazil";
+    var periodLabel = weeks + "w";
+    var dateLabel = new Date().toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"}).replace(/,/g,"");
+    var originalTitle = document.title;
+    document.title = "YT Channel Monitor - " + countryLabel + " - " + periodLabel + " - " + dateLabel;
     window.print();
-    document.body.classList.remove("printing");
+    document.title = originalTitle;
   }
 
   function addLog(msg, type) {
