@@ -660,7 +660,10 @@ function App() {
                 <div style={{padding:"12px 16px 16px", display:"flex", flexWrap:"wrap", gap:"8px"}}>
                   {skipped[country].map((ch, i) => (
                     <div key={i} style={{display:"flex", alignItems:"center", gap:"6px", background:"#f5f5f7", borderRadius:"8px", padding:"6px 10px"}}>
-                      <span style={{fontSize:"18px"}}>{brandEmoji(ch.name)}</span>
+                      {ch.thumb
+                        ? <img src={ch.thumb} style={{width:"22px", height:"22px", borderRadius:"50%", objectFit:"cover"}} alt="" />
+                        : <span style={{fontSize:"18px"}}>{brandEmoji(ch.name)}</span>
+                      }
                       <span style={{fontSize:"12px", color:"#3d3d3f", fontWeight:"500"}}>{ch.name}</span>
                     </div>
                   ))}
