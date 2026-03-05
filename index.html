@@ -240,9 +240,8 @@ function HighlightsSection(props) {
 
 function FlashCard(props) {
   var ch = props.ch;
-  var forceOpen = props.forceOpen || false;
   var stateArr = React.useState(false);
-  var isOpen = forceOpen || stateArr[0];
+  var isOpen = stateArr[0];
   var setOpen = stateArr[1];
   var videos = ch.videos || [];
   var total = sumViews(videos);
@@ -527,7 +526,7 @@ function App() {
               </div>
             </div>
             <div className="cards-grid">
-              {sorted.map(function(ch, i) { return <FlashCard key={ch.handle} ch={ch} forceOpen={true} />; })}
+              {sorted.map(function(ch, i) { return <FlashCard key={ch.handle} ch={ch} />; })}
               <InactiveCard list={skippedList} />
             </div>
             <div className="print-footer">
