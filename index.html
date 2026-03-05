@@ -483,8 +483,8 @@ function FlashCard({ ch }) {
 
       <div className="flashcard-takeaway">
         <div style={{display:"flex",gap:"16px",marginBottom:"10px"}}>
-          <span style={{fontSize:"12px",color:"#86868b"}}>🎬 <strong style={{color:"#1d1d1f"}}>{vids.length}</strong> video{vids.length!==1?"s":""}</span>
-          <span style={{fontSize:"12px",color:"#86868b"}}>👁 <strong style={{color:"#1d1d1f"}}>{fmtN(tv)}</strong> views</span>
+          <span style={{fontSize:"12px",color:"#86868b"}}>🎬 <strong style={{color:"#1d1d1f"}}>{getVideos(ch).length}</strong> video{getVideos(ch).length!==1?"s":""}</span>
+          <span style={{fontSize:"12px",color:"#86868b"}}>👁 <strong style={{color:"#1d1d1f"}}>{fmtN(getTotalViews(ch))}</strong> views</span>
         </div>
         <div className="takeaway-label">Channel Takeaway</div>
         {ch.takeaway || "No takeaway available."}
@@ -503,7 +503,7 @@ function FlashCard({ ch }) {
 
       {open && (
         <div className="video-list" onClick={e => e.stopPropagation()}>
-          {ch.videos.map((v, i) => (
+          {getVideos(ch).map((v, i) => (
             <div key={i} className="video-item">
               {v.thumb
                 ? <img src={v.thumb} className="video-thumb" alt="" />
