@@ -451,6 +451,19 @@ function DebugLog({ logs }) {
   );
 }
 
+class ErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { error: null }; }
+  componentDidCatch(e) { this.setState({ error: e.message }); }
+  render() {
+    if (this.state.error) return (
+      <div style={{padding:"40px",fontFamily:"monospace",color:"#ff3b30",background:"#fff5f5",borderRadius:"12px",margin:"20px"}}>
+        <strong>Render error:</strong><br/>{this.state.error}
+      </div>
+    );
+    return this.props.children;
+  }
+}
+
 function FlashCard({ ch }) {
   const [open, setOpen] = useState(false);
   return (
@@ -689,7 +702,7 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<ErrorBoundary><App /></ErrorBoundary>, document.getElementById("root"));
 </script>
 </body>
 </html>
